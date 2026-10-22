@@ -1,15 +1,19 @@
-// =============================================================================
 // File: src/app/about/page.tsx
-// Purpose: About page (`/about`).
-// College assignment mate simple overview, tech stack ane features batavse.
-// =============================================================================
+// Route: /about
+// Simple static page. SERVER COMPONENT (no state, no client interaction).
 
+import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "About — Campus Directory",
+  description: "About the Campus Directory project built with Next.js App Router.",
+};
 
 export default function AboutPage() {
   return (
     <div>
-      {/* Breadcrumbs: Directory / About */}
+      {/* Breadcrumb */}
       <Breadcrumbs
         items={[
           { label: "Directory", href: "/students" },
@@ -20,71 +24,81 @@ export default function AboutPage() {
       <div className="page-header">
         <h1 className="page-title">About Campus Directory</h1>
         <p className="page-subtitle">
-          An intuitive, modern academic directory platform built with Next.js App Router.
+          An academic directory built with Next.js App Router.
         </p>
       </div>
 
-      {/* Project Mission Card */}
+      {/* Project Info */}
       <div className="card" style={{ padding: "2rem", marginBottom: "1.75rem" }}>
         <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.85rem" }}>
           Project Mission
         </h2>
-        <p style={{ color: "#334155", lineHeight: 1.7, marginBottom: "1.25rem" }}>
-          Campus Directory is developed as an academic frontend assignment to demonstrate
-          the power of <strong>Next.js App Router</strong>, <strong>TypeScript</strong>, and clean, accessible
-          component architecture. The platform allows faculty, students, and administrators to seamlessly
-          explore academic faculties, study tracks, and individual student profiles.
+        <p style={{ color: "#334155", lineHeight: 1.7, marginBottom: "1rem" }}>
+          Campus Directory is a college frontend assignment to demonstrate{" "}
+          <strong>Next.js App Router</strong>, <strong>TypeScript</strong>, and
+          clean component architecture. It lets users explore departments,
+          specializations, and student profiles.
         </p>
         <p style={{ color: "#334155", lineHeight: 1.7 }}>
-          Built with an emphasis on clarity, high readability, responsive typography, and
-          light lavender-tinted surfaces, the interface reflects modern collegiate design standards.
+          Built with simple Vanilla CSS, realistic dummy data, and proper
+          routing using static, dynamic, and nested dynamic routes.
         </p>
       </div>
 
-      {/* Features Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "1.25rem",
-          marginBottom: "2rem",
-        }}
-      >
+      {/* Features */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.25rem", marginBottom: "2rem" }}>
         <div className="card" style={{ padding: "1.5rem" }}>
           <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>⚡</div>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>
             Next.js App Router
           </h3>
           <p style={{ color: "#64748b", fontSize: "0.92rem", lineHeight: 1.6 }}>
-            Leveraging modern Server Components by default with targeted Client Components for interactive filtering and search.
+            Server Components by default. Client Components only where needed (search/filter).
           </p>
         </div>
 
         <div className="card" style={{ padding: "1.5rem" }}>
           <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>🔍</div>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>
-            Instant Search & Filter
+            Search & Filter
           </h3>
           <p style={{ color: "#64748b", fontSize: "0.92rem", lineHeight: 1.6 }}>
-            Real-time client-side search by student name, student ID, and academic department with automatic pagination reset.
+            Real-time client-side search by name, ID, and department with pagination.
           </p>
         </div>
 
         <div className="card" style={{ padding: "1.5rem" }}>
           <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>🛡️</div>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>
-            TypeScript Type Safety
+            TypeScript Types
           </h3>
           <p style={{ color: "#64748b", fontSize: "0.92rem", lineHeight: 1.6 }}>
-            Comprehensive interfaces for students, departments, and specializations ensuring clean contracts and bug-free code.
+            All data shapes defined with interfaces in <code>src/types/index.ts</code>.
           </p>
         </div>
       </div>
 
-      {/* Footer meta row */}
+      {/* Tech Stack Table */}
+      <div className="card" style={{ padding: "1.75rem", marginBottom: "2rem" }}>
+        <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "1rem" }}>Tech Stack</h2>
+        <div className="subjects-box">
+          {[
+            ["Next.js 15", "App Router, Server/Client Components"],
+            ["TypeScript", "Type-safe interfaces for all data"],
+            ["Vanilla CSS", "All styling — no Tailwind"],
+            ["React 19", "UI rendering"],
+          ].map(([tech, desc]) => (
+            <div key={tech} className="subject-row">
+              <span className="subject-name">{tech}</span>
+              <span className="subject-credits" style={{ textAlign: "right" }}>{desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="footer-meta-row">
         <span>Curriculum Year 2024–2025</span>
-        <span>Version 1.0.0 · Frontend Practice</span>
+        <span>Version 1.0.0 · Frontend Assignment</span>
       </div>
     </div>
   );

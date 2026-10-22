@@ -1,39 +1,33 @@
-// =============================================================================
 // File: src/components/Breadcrumbs.tsx
-// Purpose: User page hierarchy ma kya chhe te batava mate Breadcrumb component.
-// Example: "Students / Aarav Mehta"
-// =============================================================================
+// Reusable breadcrumb component.
+// Example output: Students / Aarav Mehta
+// Last item is plain text (current page), earlier items are clickable links.
 
 import Link from "next/link";
 import { BreadcrumbItem } from "@/types";
 
 interface BreadcrumbsProps {
-  items: BreadcrumbItem[]; // Breadcrumbs ni array
+  items: BreadcrumbItem[];
 }
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="breadcrumbs-bar">
       {items.map((item, index) => {
-        // Last item current page hoy, etle e link na bane
         const isLast = index === items.length - 1;
 
         return (
-          <span
-            key={index}
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
-          >
+          <span key={index} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+            {/* If it has a link AND it's not the last item → make it a link */}
             {item.href && !isLast ? (
-              // Link hoy toh Next.js Link component render karo
               <Link href={item.href} className="breadcrumb-link">
                 {item.label}
               </Link>
             ) : (
-              // Last item hoy toh plain text rakho
               <span className="breadcrumb-current">{item.label}</span>
             )}
 
-            {/* Last item na hoy toh slash '/' symbol batavo */}
+            {/* Show "/" separator between items */}
             {!isLast && <span className="breadcrumb-separator">/</span>}
           </span>
         );

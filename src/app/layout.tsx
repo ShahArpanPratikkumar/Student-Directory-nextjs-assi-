@@ -1,19 +1,16 @@
-// =============================================================================
 // File: src/app/layout.tsx
-// Purpose: Root layout file chhe. Badha pages aa layout ni andar render thay chhe.
-// Navbar ane Footer ahiya ek j vaar mukva thi badha pages par automatically aavi jaay.
-// =============================================================================
+// This is the ROOT LAYOUT. It wraps every page.
+// Navbar and Footer are placed here so they appear on ALL pages automatically.
 
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Page title ane description (SEO meta tags)
+// SEO: Page title and description shown in browser tab
 export const metadata: Metadata = {
-  title: "Campus Directory — Student & Department Portal",
-  description:
-    "Explore student profiles, academic departments, and specializations built with Next.js App Router.",
+  title: "Campus Directory",
+  description: "Student and Department Directory built with Next.js App Router.",
 };
 
 export default function RootLayout({
@@ -24,13 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* Top Navbar */}
+        {/* Navbar appears at the top of every page */}
         <Navbar />
 
-        {/* Main page content je center container ma aavse */}
+        {/* 'children' = the current page content */}
         <main className="container">{children}</main>
 
-        {/* Bottom Footer */}
+        {/* Footer appears at the bottom of every page */}
         <Footer />
       </body>
     </html>

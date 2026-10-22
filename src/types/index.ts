@@ -1,66 +1,64 @@
-// =============================================================================
 // File: src/types/index.ts
-// Purpose: Aa file ma badha TypeScript types and interfaces define karela chhe.
-// Beginner mate aa file no use etle chhe k koi spelling mistake na thay.
-// =============================================================================
+// All TypeScript interfaces are defined here in ONE place.
+// We import these types in data files and components to avoid mistakes.
 
-// Subject (Vishay) mate no interface
+// One subject that a student is enrolled in
 export interface EnrolledSubject {
-  code: string;       // Example: "CS-301"
-  name: string;       // Subject name: "Distributed Systems & Microservices"
-  credits: number;    // Credits: 4.0
+  code: string;    // e.g. "CS-301"
+  name: string;    // e.g. "Distributed Systems"
+  credits: number; // e.g. 4.0
 }
 
-// Student mate no simple interface
+// A student record
 export interface Student {
-  id: string;               // Unique ID: "STU-1042"
-  name: string;             // Full name: "Aarav Mehta"
-  initials: string;         // Avatar mate initials: "AM"
-  avatarColor: string;      // Avatar background color: "blue", "peach", etc.
-  email: string;            // Email address: "aarav.mehta@campus.edu"
-  department: string;       // Department: "Computer Science", "Design", "Business"
-  departmentSlug: string;   // URL ma use thase: "computer-science"
-  specializationSlug: string;// Branch slug: "web-development"
-  trackFocus: string;       // Focus topic: "Full-Stack Architecture"
-  studyYear: string;        // Year: "3rd Year"
-  enrolledTerm: string;     // Term: "Fall 2022"
-  status: "Active Student" | "Graduated" | "On Leave"; // Status
-  about: string;            // Short bio / about text
-  academicStanding: string; // "3rd Year Undergraduate"
-  subjects: EnrolledSubject[]; // Student na subjects no list (array)
-  systemRecordId: string;   // Record ID: "0948-CS-AM"
-  lastValidated: string;    // Date: "Oct 24, 2024"
+  id: string;                // Unique ID: "STU-1042"
+  name: string;              // Full name: "Aarav Mehta"
+  initials: string;          // For avatar display: "AM"
+  avatarColor: string;       // Color class: "blue", "lavender", etc.
+  email: string;             // Email address
+  department: string;        // Department name: "Computer Science"
+  departmentSlug: string;    // URL slug: "computer-science"
+  specializationSlug: string;// Track slug: "web-development"
+  trackFocus: string;        // Focus area: "Full-Stack Architecture"
+  studyYear: string;         // "3rd Year"
+  enrolledTerm: string;      // "Fall 2022"
+  status: "Active Student" | "Graduated" | "On Leave";
+  about: string;             // Short bio
+  academicStanding: string;  // "3rd Year Undergraduate"
+  subjects: EnrolledSubject[];// List of enrolled subjects
+  systemRecordId: string;    // "0948-CS-AM"
+  lastValidated: string;     // "Oct 24, 2024"
 }
 
-// Specialization (Branch) mate no interface
+// A specialization (track) inside a department
 export interface Specialization {
-  slug: string;             // URL slug: "web-development"
-  title: string;            // Title: "Web Development"
-  trackCode: string;        // Track Code: "CS-SPEC-04"
-  description: string;      // Detail description
-  academicLead: string;     // Faculty lead: "Prof. Elena Vance"
-  coreLab: string;          // Lab name: "Turing Hall 408"
-  enrollmentCountText: string; // "4 Active Enrollees"
-  curriculumCycle: string;  // "2024–2025 Revised"
+  slug: string;              // URL slug: "web-development"
+  title: string;             // Display name: "Web Development"
+  trackCode: string;         // Code: "CS-SPEC-04"
+  description: string;       // What this track covers
+  academicLead: string;      // Faculty name
+  coreLab: string;           // Lab name
+  enrollmentCountText: string;// "4 Active Enrollees"
+  curriculumCycle: string;   // "2024–2025 Revised"
 }
 
-// Department mate no interface
+// A department
 export interface Department {
-  slug: string;             // "computer-science"
-  name: string;             // "Computer Science"
-  description: string;      // Short description
-  iconType: "code" | "design" | "business"; // Icon type
-  specializationCount: number;// Kitla specialization chhe
-  enrolledStudentsCount: number; // Total students
-  academicLead: string;     // HOD / Lead
-  primaryCoreLab: string;   // Main Lab
-  curriculumCycle: string;  // "2024–2025"
-  overview: string;         // Overview paragraph
-  specializations: Specialization[]; // Aa department na tracks
+  slug: string;              // URL slug: "computer-science"
+  name: string;              // "Computer Science"
+  description: string;       // Short description
+  iconType: "code" | "design" | "business";
+  specializationCount: number;
+  enrolledStudentsCount: number;
+  academicLead: string;
+  primaryCoreLab: string;
+  curriculumCycle: string;
+  overview: string;          // Full overview paragraph
+  specializations: Specialization[];
 }
 
-// Breadcrumb links mate simple interface
+// One item in a breadcrumb trail
 export interface BreadcrumbItem {
-  label: string;            // Screen par dekhase te name
-  href?: string;            // Link URL (optional)
+  label: string;  // Text to display
+  href?: string;  // Link URL (optional — last item has no link)
 }

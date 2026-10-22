@@ -1,13 +1,9 @@
-// =============================================================================
 // File: src/app/page.tsx
-// Purpose: Home page ('/') chhe.
-// Jyare koi website na root url par aave tyare ene direct '/students' page par
-// redirect kari devay chhe.
-// =============================================================================
+// This is the HOME PAGE ( / ).
+// We don't want a separate home page, so we redirect to /students directly.
 
 import { redirect } from "next/navigation";
 
 export default function HomePage() {
-  // Next.js nu redirect function use karyu chhe
   redirect("/students");
 }
